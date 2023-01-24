@@ -19,4 +19,5 @@ resource ibm_compute_bare_metal baremetal {
     notes = "note test"
 }
 
+
 ##############################################################################s

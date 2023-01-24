@@ -7,6 +7,7 @@ variable TF_VERSION {
  description = "The version of the Terraform engine that's used in the Schematics workspace."
 }
 
+
 variable DC {
   default = "SAO01"
   description = "Datacenter that will be used for the Baremetal"
