@@ -12,6 +12,11 @@ variable DC {
   description = "Datacenter that will be used for the Baremetal"
 }
 
+variable SO {
+  default = "UBUNTU_LATEST"
+  description = "Operation System"
+}
+
 variable iaas_classic_username {
   description = "IBM Cloud classic username"
   type        = string

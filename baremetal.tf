@@ -5,7 +5,7 @@
 resource ibm_compute_bare_metal baremetal {
     hostname             = var.hostname
     domain               = var.domain
-    os_reference_code    = "UBUNTU_16_64"
+    os_reference_code    = var.SO
     datacenter           = var.DC
     hourly_billing       = true 
     private_network_only = true
