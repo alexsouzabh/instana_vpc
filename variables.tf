@@ -54,8 +54,8 @@ variable fixed_config_preset  {
   type        = string
 }
 
-variable private_vlan_id {
-  description = "Private VLAN ID"
-}
+//variable private_vlan_id {
+//  description = "Private VLAN ID"
+//}
 
 ##############################################################################

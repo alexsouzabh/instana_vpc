@@ -10,7 +10,7 @@ resource ibm_compute_bare_metal baremetal {
     hourly_billing       = true 
     private_network_only = true
     fixed_config_preset  = var.fixed_config_preset
-    private_vlan_id      = var.private_vlan_id
+    //private_vlan_id      = var.private_vlan_id
 
     user_metadata = "{\"value\":\"newvalue\"}" # Optional
     tags = [
