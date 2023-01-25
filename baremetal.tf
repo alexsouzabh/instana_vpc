@@ -38,6 +38,10 @@ resource "ibm_compute_vm_instance" "twc_terraform_sample" {
   local_disk                 = false
   public_vlan_id             = ibm_network_vlan.test_vlan_public.ID
   private_vlan_id            = ibm_network_vlan.test_vlan_private.ID
+  depends_on = [
+    ibm_network_vlan.test_vlan_private,
+    ibm_network_vlan.test_vlan_public
+  ]
 }
 
 #resource ibm_compute_bare_metal baremetal {
