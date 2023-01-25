@@ -4,7 +4,7 @@
 
 resource "ibm_network_vlan" "test_vlan_public" {
   name            = "public_vlan"
-  datacenter      = var.SO
+  datacenter      = var.DC
   type            = "PUBLIC"
   tags = [
     "collectd",
@@ -14,7 +14,7 @@ resource "ibm_network_vlan" "test_vlan_public" {
 
 resource "ibm_network_vlan" "test_vlan_private" {
   name            = "private_vlan"
-  datacenter      = var.SO
+  datacenter      = var.DC
   type            = "PRIVATE"
   tags = [
     "collectd",
