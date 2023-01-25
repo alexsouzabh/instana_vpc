@@ -36,8 +36,8 @@ resource "ibm_compute_vm_instance" "twc_terraform_sample" {
   user_metadata              = "{\"value\":\"newvalue\"}"
   dedicated_acct_host_only   = true
   local_disk                 = false
-  public_vlan_id             = ibm_network_vlan.test_vlan_public
-  private_vlan_id            = ibm_network_vlan.test_vlan_private
+  public_vlan_id             = ibm_network_vlan.test_vlan_public.id
+  private_vlan_id            = ibm_network_vlan.test_vlan_private.id
   depends_on = [
     ibm_network_vlan.test_vlan_private,
     ibm_network_vlan.test_vlan_public
