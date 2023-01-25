@@ -48,6 +48,12 @@ variable hostname {
   default     = "example-baremetal"
 }
 
+variable hostname02 {
+  description = "Name of host for virtual server abc"
+  type        = string
+  default     = "example-bare"
+}
+
 variable domain {
   description = "Domain name for baremetal server"
   type        = string
@@ -58,11 +64,6 @@ variable fixed_config_preset  {
   description = "Config preset for baremetal server"
   type        = string
 }
-
-//variable private_vlan_id {
-//  description = "Private VLAN ID"
-//}
-
 
 
 ##############################################################################
