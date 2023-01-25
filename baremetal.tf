@@ -44,7 +44,7 @@ resource "ibm_compute_vm_instance" "twc_terraform_sample" {
   ]
 }
 
-resource "ibm_compute_vm_instance" "twc_terraform_sample" {
+resource "ibm_compute_vm_instance" "twc_terraform_database" {
   hostname                   = var.hostname02
   domain                     = var.domain
   os_reference_code          = var.SO
