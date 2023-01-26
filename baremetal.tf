@@ -23,6 +23,7 @@ resource "ibm_network_vlan" "test_vlan_private" {
 }
 
 resource "ibm_compute_vm_instance" "twc_terraform_sample" {
+  count                      = var.server_qtde
   hostname                   = var.hostname
   domain                     = var.domain
   os_reference_code          = var.SO
@@ -42,28 +43,9 @@ resource "ibm_compute_vm_instance" "twc_terraform_sample" {
     ibm_network_vlan.test_vlan_private,
     ibm_network_vlan.test_vlan_public
   ]
-}
-
-resource "ibm_compute_vm_instance" "twc_terraform_database" {
-  hostname                   = var.hostname02
-  domain                     = var.domain
-  os_reference_code          = var.SO
-  datacenter                 = var.DC
-  network_speed              = 100
-  hourly_billing             = true
-  private_network_only       = false
-  cores                      = 1
-  memory                     = 1024
-  disks                      = [25, 10, 20]
-  user_metadata              = "{\"value\":\"newvalue\"}"
-  dedicated_acct_host_only   = true
-  local_disk                 = false
-  public_vlan_id             = ibm_network_vlan.test_vlan_public.id
-  private_vlan_id            = ibm_network_vlan.test_vlan_private.id
-  depends_on = [
-    ibm_network_vlan.test_vlan_private,
-    ibm_network_vlan.test_vlan_public
-  ]
+  tags = {
+    hostname = "Server-0$(count.index + 1)"
+  }
 }
 
 #resource ibm_compute_bare_metal baremetal {

@@ -17,6 +17,11 @@ variable SO {
   description = "Operation System"
 }
 
+variable server_qtde {
+  default = 1
+  description = "Quantity of servers"
+}
+
 variable iaas_classic_username {
   description = "IBM Cloud classic username"
   type        = string
