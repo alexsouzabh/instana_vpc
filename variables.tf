@@ -18,7 +18,7 @@ variable SO {
 }
 
 variable server_qtde {
-  default = 1
+  default = 5
   description = "Quantity of servers"
 }
 
