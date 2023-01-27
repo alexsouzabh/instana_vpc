@@ -24,7 +24,7 @@ resource "ibm_network_vlan" "test_vlan_private" {
 
 resource "ibm_compute_vm_instance" "twc_terraform_sample" {
   count                      = var.server_qtde
-  hostname                   = "Server-0$(count.index + 1)"
+  hostname                   = "Server-0${count.index + 1}"
   domain                     = var.domain
   os_reference_code          = var.SO
   datacenter                 = var.DC
