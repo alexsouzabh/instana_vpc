@@ -65,10 +65,10 @@ variable domain {
   default     = "example.com"
 }
 
-variable fixed_config_preset  {
-  description = "Config preset for baremetal server"
-  type        = string
-}
+# variable fixed_config_preset  {
+#   description = "Config preset for baremetal server"
+#   type        = string
+# }
 
 
 ##############################################################################
