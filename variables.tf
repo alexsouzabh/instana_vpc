@@ -8,7 +8,7 @@ variable TF_VERSION {
 }
 
 variable DC {
-  default = "SAO01"
+  default = "sao01"
   description = "Datacenter that will be used for the Baremetal"
 }
 
@@ -24,6 +24,7 @@ variable server_qtde {
 
 variable iaas_classic_username {
   description = "IBM Cloud classic username"
+  default = "apikey"
   type        = string
 }
 
