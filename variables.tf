@@ -7,7 +7,7 @@
 ###################################
 
 variable zone {
- default     = "dal01"
+ default     = "DAL01"
  description = "DC Zone"
 }
 
