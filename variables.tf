@@ -12,7 +12,7 @@ variable region {
 }
 
 variable zone {
- default     = "DAL01"
+ default     = "us-south-1"
  description = "DC Zone"
 }
 
