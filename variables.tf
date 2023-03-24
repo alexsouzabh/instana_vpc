@@ -6,6 +6,17 @@
 ## GERAL VARIABLES
 ###################################
 
+variable iaas_classic_username {
+  description = "IBM Cloud classic username"
+  default = "apikey"
+  type        = string
+}
+
+variable iaas_classic_api_key {
+  description = "IBM Cloud classic api key"
+  type        = string
+}
+
 variable region {
  default     = "us-south"
  description = "DC Zone"
@@ -41,3 +52,4 @@ variable TF_VERSION {
  default     = "0.13"
  description = "The version of the Terraform engine that's used in the Schematics workspace."
 }
+
