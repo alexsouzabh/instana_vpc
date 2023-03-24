@@ -5,6 +5,7 @@
 # Virtual Private Cloud
 resource "ibm_is_vpc" "vpc-instance" {
   name = "${var.netbasename}-vpc"
+  address_prefix_management = "manual"
 }
 
 resource "ibm_is_vpc_address_prefix" "vpc-instance" {
