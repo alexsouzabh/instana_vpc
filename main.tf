@@ -8,7 +8,7 @@ resource "ibm_is_vpc" "vpc-instance" {
 }
 
 resource "ibm_is_vpc_address_prefix" "vpc-instance" {
-  cidr = var.vpc-prefic
+  cidr = var.vpc-prefix
   name = "VPC NETWORK"
   vpc  = ibm_is_vpc.vpc-instance.id
   zone = var.zone
