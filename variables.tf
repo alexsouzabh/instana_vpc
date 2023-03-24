@@ -2,6 +2,30 @@
 # Account variables
 ##############################################################################
 
+###################################
+## GERAL VARIABLES
+###################################
+
+variable zone {
+ default     = "dal01"
+ description = "DC Zone"
+}
+
+###################################
+## VPC VARIABLES
+###################################
+
+variable netbasename {
+ default     = "instana_network"
+ description = "Base name for network components."
+}
+
+variable ipv4-zone01 {
+ default     = "10.200.1.0/24"
+ description = "Base name for network components."
+}
+
+##################################
 variable TF_VERSION {
  default     = "0.13"
  description = "The version of the Terraform engine that's used in the Schematics workspace."
@@ -38,15 +62,11 @@ variable resource_group {
     type        = string
     default     = "asset-development"
 
-    validation  {
+validation  {
       error_message = "Unique ID must begin and end with a letter and contain only letters, numbers, and - characters."
       condition     = can(regex("^([a-z]|[a-z][-a-z0-9]*[a-z0-9])$", var.resource_group))
     }
 }
-
-##############################################################################
-# Baremetal Variables
-##############################################################################
 
 variable hostname {
   description = "Name of host for virtual server"
@@ -65,11 +85,3 @@ variable domain {
   type        = string
   default     = "example.com"
 }
-
-# variable fixed_config_preset  {
-#   description = "Config preset for baremetal server"
-#   type        = string
-# }
-
-
-##############################################################################
