@@ -37,7 +37,7 @@ variable netbasename {
 }
 
 variable vpc-prefix {
- default     = "10.200.1.0/16"
+ default     = "10.200.0.0/16"
  description = "VPC IP ADD"
 }
 

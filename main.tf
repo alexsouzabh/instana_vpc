@@ -5,7 +5,6 @@
 # Virtual Private Cloud
 resource "ibm_is_vpc" "vpc-instance" {
   name = "${var.netbasename}-vpc"
-  region = var.region
 }
 
 resource "ibm_is_vpc_address_prefix" "vpc-instance" {
