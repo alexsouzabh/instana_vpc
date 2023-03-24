@@ -8,6 +8,27 @@ resource "ibm_is_vpc" "vpc-instance" {
   region = var.region
 }
 
+resource "ibm_is_vpc_address_prefix" "vpc-instance" {
+  cidr = var.vpc-prefic
+  name = "VPC NETWORK"
+  vpc  = ibm_is_vpc.vpc-instance.id
+  zone = var.zone
+}
+
+# Subnet 
+resource "ibm_is_subnet" "subnet1" {
+  depends_on = [
+    ibm_is_vpc_address_prefix.vpc-instance
+  ]
+   #name                     = "${var.netbasename}-subnet1"
+   name                     = "subnet1"
+   vpc                      = ibm_is_vpc.vpc-instance.id
+   zone                     = var.zone
+   ipv4_cidr_block          = var.ipv4-zone01
+   #total_ipv4_address_count = 256
+}
+
+
 # Security group
 resource "ibm_is_security_group" "sg1" {
    name = "${var.netbasename}-sg1"
@@ -26,12 +47,3 @@ resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
    }
 }
  
-# Subnet 
-resource "ibm_is_subnet" "subnet1" {
-   #name                     = "${var.netbasename}-subnet1"
-   name                     = "subnet1"
-   vpc                      = ibm_is_vpc.vpc-instance.id
-   zone                     = var.zone
-   #ipv4_cidr_block          = var.ipv4-zone01
-   total_ipv4_address_count = 256
-}
