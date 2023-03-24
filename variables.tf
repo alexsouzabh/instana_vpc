@@ -16,7 +16,7 @@ variable zone {
 ###################################
 
 variable netbasename {
- default     = "instana_network"
+ default     = "instana-network"
  description = "Base name for network components."
 }
 
