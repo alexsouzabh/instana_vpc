@@ -30,6 +30,6 @@ resource "ibm_is_subnet" "subnet1" {
    name                     = "${var.netbasename}-subnet1"
    vpc                      = ibm_is_vpc.vpc-instance.id
    zone                     = var.zone
-   ipv4_cidr_block          = var.ipv4-zone01
-   #total_ipv4_address_count = 256
+   #ipv4_cidr_block          = var.ipv4-zone01
+   total_ipv4_address_count = 256
 }
