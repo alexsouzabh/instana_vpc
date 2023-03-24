@@ -5,6 +5,7 @@
 # Virtual Private Cloud
 resource "ibm_is_vpc" "vpc-instance" {
   name = "${var.netbasename}-vpc"
+  region = var.region
 }
 
 # Security group
@@ -27,8 +28,8 @@ resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
  
 # Subnet 
 resource "ibm_is_subnet" "subnet1" {
-   #name                     = "${var.netbasename}-subnet1"
-   name                     = "subnet1"
+   name                     = "${var.netbasename}-subnet1"
+   #name                     = "subnet1"
    vpc                      = ibm_is_vpc.vpc-instance.id
    zone                     = var.zone
    #ipv4_cidr_block          = var.ipv4-zone01

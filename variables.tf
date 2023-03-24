@@ -6,6 +6,11 @@
 ## GERAL VARIABLES
 ###################################
 
+variable region {
+ default     = "us-south"
+ description = "DC Zone"
+}
+
 variable zone {
  default     = "DAL01"
  description = "DC Zone"
