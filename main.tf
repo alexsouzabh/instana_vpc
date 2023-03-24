@@ -25,7 +25,6 @@ resource "ibm_is_subnet" "subnet1" {
    vpc                      = ibm_is_vpc.vpc-instance.id
    zone                     = var.zone
    ipv4_cidr_block          = var.ipv4-zone01
-   #total_ipv4_address_count = 256
 }
 
 
@@ -47,3 +46,25 @@ resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
    }
 }
  
+
+############################
+## Server configuration
+############################
+
+data "ibm_is_image" "centos" {
+    name = "ibm-centos-7-6-minimal-amd64-1"
+}
+
+resource "ibm_is_instance" "vsi-cassandra" {
+    name    = "cassandra"
+    vpc     = ibm_is_vpc.vpc-instance.id
+    zone    = var.zone
+    #keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
+    image   = data.ibm_is_image.centos.id
+    profile = "bx2-2x8"
+
+    primary_network_interface {
+        subnet          = ibm_is_subnet.subnet1.id
+        security_groups = [ibm_is_security_group.sg1.id]
+    }
+}
