@@ -85,7 +85,7 @@ variable cassandra_profile {
 
 ##################################
 variable TF_VERSION {
- default     = "0.13"
+ default     = "˜> 1.1"
  description = "The version of the Terraform engine that's used in the Schematics workspace."
 }
 
