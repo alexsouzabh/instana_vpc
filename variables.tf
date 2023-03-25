@@ -43,7 +43,7 @@ variable vpc-prefix {
 }
 
 variable vpc-zones {
- default     = ["us-south1","us-south2","us-south3"]
+ default     = ["us-south-1","us-south-2","us-south-3"]
  description = "Zones to be configures"
  type=list
 }
