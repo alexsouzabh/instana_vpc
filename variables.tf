@@ -78,6 +78,44 @@ variable cassandra_profile {
  description = "Number of cassandra instances"
 }
 
+###################################
+## CLICKHOUSE VARIABLES
+###################################
+
+variable clickhouse_basename {
+ default     = "srv-clickhouse"
+ description = "Base name for network components."
+}
+
+variable clickhouse_qtde {
+ default     = 1
+ description = "Number of cassandra instances"
+}
+
+variable clickhouse_profile {
+ default     = "bx2-2x8"
+ description = "Number of cassandra instances"
+}
+
+###################################
+## MONITORING VARIABLES
+###################################
+
+variable monitoring_basename {
+ default     = "srv-monitoring"
+ description = "Base name for network components."
+}
+
+variable monitoring_qtde {
+ default     = 1
+ description = "Number of cassandra instances"
+}
+
+variable monitoring_profile {
+ default     = "bx2-2x8"
+ description = "Number of cassandra instances"
+}
+
 ##################################
 variable TF_VERSION {
  default     = "˜> 1.1"
