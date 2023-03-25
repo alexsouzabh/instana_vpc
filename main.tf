@@ -22,11 +22,10 @@ resource "ibm_is_subnet" "subnet" {
     ibm_is_vpc_address_prefix.vpc-instance
   ]
   count = length(var.vpc-zones)
-  indexzone = floor(count.index/3)         
   name = "${var.netbasename}-subnet-${count.index+1}"
   #name                     = "subnet1"
   vpc = ibm_is_vpc.vpc-instance.id
-  zone = element(var.vpc-zones,indexzone)
+  zone = element(var.vpc-zones,floor(count.index/3) )
   ipv4_cidr_block = element(var.vpc-zones-ips,count.index)
   #zone                     = var.zone
   #ipv4_cidr_block          = var.ipv4-zone01
