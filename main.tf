@@ -50,6 +50,12 @@ resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
 ############################
 ## Server configuration
 ############################
+variable "ssh_key" {
+}
+
+data "ibm_is_ssh_key" "ssh_key_id" {
+    name = var.ssh_key
+}
 
 data "ibm_is_image" "centos" {
     name = "ibm-centos-7-6-minimal-amd64-1"
@@ -59,7 +65,7 @@ resource "ibm_is_instance" "vsi-cassandra" {
     name    = "cassandra"
     vpc     = ibm_is_vpc.vpc-instance.id
     zone    = var.zone
-    #keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
+    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
     image   = data.ibm_is_image.centos.id
     profile = "bx2-2x8"
 
