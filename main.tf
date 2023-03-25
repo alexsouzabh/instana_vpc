@@ -64,7 +64,7 @@ data "ibm_is_image" "centos" {
 }
 
 resource "ibm_is_instance" "vsi-abc" {
-    count   = var.cassandra_qtde
+    count   = var.monitoring_qtde
     name    = "${var.cassandra_basename}-${count.index + 10}"
     vpc     = ibm_is_vpc.vpc-instance.id
     zone    = var.vpc-zones[count.index - (floor(count.index/length(var.vpc-zones))*length(var.vpc-zones))]
