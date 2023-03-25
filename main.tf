@@ -61,7 +61,7 @@ data "ibm_is_image" "centos" {
 
 resource "ibm_is_instance" "vsi-cassandra" {
     count   = var.cassandra_qtde
-    name    = "$(var.cassandra_basename)-${count.index + 1}"
+    name    = "${var.cassandra_basename}-${count.index + 1}"
     vpc     = ibm_is_vpc.vpc-instance.id
     zone    = var.zone
     keys    = [ibm_is_ssh_key.ssh_key_id.id]
