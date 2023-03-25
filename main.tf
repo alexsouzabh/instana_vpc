@@ -50,11 +50,9 @@ resource "ibm_is_security_group_rule" "example-ingress_ssh_all" {
 ############################
 ## Server configuration
 ############################
-variable "ssh_key" {
-}
-
-data "ibm_is_ssh_key" "ssh_key_id" {
-    name = var.ssh_key
+resource "ibm_is_ssh_key" "ssh_key_id" {
+    name = "instana-ssh"
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDVyX2htDl8OZsUb5IYq3nKDEpHcGqTWX0jMwFZbBpUU4nuHIDNr2Kj5EvTifbN+NVY3T4X4WzuqQlcIJH8BOS2xTSqV9iudVWGGrLLU/+nkCAzOIaRWhC9owoe6DHOTPqg963obZ9idMsNKKw7jvBD+olvmflglozuNUVEh66509fzpjTbYqI03D9h+Xcsvld4nSCXm+vq3F2D63uJ+895fMY1F/Ufkdd7y3yACsL27CLi3gKeQHZDvnikDtf94sUhgD93WXUymcE/tKxp9nHrUwRmlmZ3mBx+wneMDY/qg9yhW6SplFTpnnGVjc+EHLv6oYYxVDsGpzRcEjcfSuFVyGUMIgyjCTKkTqReAQuonwxOF6FgZLMWfFokKr+cZiLC0H9NSqtSx+EWu+NkhXI8/E9Js3AVBY9MAFFLlfNOyJtS3TDFClOpTTrb++w5BkbrAqY2fPePy0D2nXgMsFfB+MZlLyVCv98Q0CRlDzIzaE96lZD/INB3WGF/ORiwwrE="
 }
 
 data "ibm_is_image" "centos" {
@@ -65,7 +63,7 @@ resource "ibm_is_instance" "vsi-cassandra" {
     name    = "cassandra"
     vpc     = ibm_is_vpc.vpc-instance.id
     zone    = var.zone
-    keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
+    keys    = [ibm_is_ssh_key.ssh_key_id.id]
     image   = data.ibm_is_image.centos.id
     profile = "bx2-2x8"
 
