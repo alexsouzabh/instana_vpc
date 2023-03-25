@@ -9,22 +9,26 @@ resource "ibm_is_vpc" "vpc-instance" {
 }
 
 resource "ibm_is_vpc_address_prefix" "vpc-instance" {
-  cidr = var.vpc-prefix
-  name = "vpc-network"
+  count   = length(var.vpc-prefix)
+  cidr = element(var.vpc-prefix, count.index)
+  name = "vpc-network-${count.index}"
   vpc  = ibm_is_vpc.vpc-instance.id
-  zone = var.zone
+  zone = element(var.vpc-zones, count.index)
 }
 
 # Subnet 
-resource "ibm_is_subnet" "subnet1" {
+resource "ibm_is_subnet" "subnet" {
   depends_on = [
     ibm_is_vpc_address_prefix.vpc-instance
   ]
-   #name                     = "${var.netbasename}-subnet1"
-   name                     = "subnet1"
-   vpc                      = ibm_is_vpc.vpc-instance.id
-   zone                     = var.zone
-   ipv4_cidr_block          = var.ipv4-zone01
+  count   = length(var.vpc-zones)
+  name                     = "${var.netbasename}-subnet-${count.index+1}"
+  #name                     = "subnet1"
+  vpc                      = ibm_is_vpc.vpc-instance.id
+  zone                     = element(var.vpc-zones,count.index)
+  ipv4_cidr_block          = element(var.vpc-zones-ips,count.index)
+  #zone                     = var.zone
+  #ipv4_cidr_block          = var.ipv4-zone01
 }
 
 

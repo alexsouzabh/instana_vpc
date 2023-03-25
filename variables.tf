@@ -36,9 +36,24 @@ variable netbasename {
  description = "Base name for network components."
 }
 
+#variable vpc-prefix {
+# default     = "10.200.0.0/16"
+# description = "VPC IP ADD"
+#}
+
 variable vpc-prefix {
- default     = "10.200.0.0/16"
+ default     = ["10.200.0.0/20","10.200.16.0/20","10.200.32.0/20"]
  description = "VPC IP ADD"
+}
+
+variable vpc-zones {
+ default     = ["us-south1","us-south2","us-south3"]
+ description = "Zones to be configures"
+}
+
+variable vpc-zones-ips {
+ default     = ["10.200.0.0/24","10.200.16.0/24","10.200.32.0/24"]
+ description = "Zones to be configures"
 }
 
 variable ipv4-zone01 {
@@ -47,7 +62,7 @@ variable ipv4-zone01 {
 }
 
 ###################################
-## VPC VARIABLES
+## CASSANDRA VARIABLES
 ###################################
 
 variable cassandra_basename {
