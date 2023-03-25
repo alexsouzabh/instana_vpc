@@ -44,16 +44,19 @@ variable netbasename {
 variable vpc-prefix {
  default     = ["10.200.0.0/20","10.200.16.0/20","10.200.32.0/20"]
  description = "VPC IP ADD"
+ type="list"
 }
 
 variable vpc-zones {
  default     = ["us-south1","us-south2","us-south3"]
  description = "Zones to be configures"
+ type="list"
 }
 
 variable vpc-zones-ips {
  default     = ["10.200.0.0/24","10.200.16.0/24","10.200.32.0/24"]
  description = "Zones to be configures"
+ type="list"
 }
 
 variable ipv4-zone01 {
