@@ -65,15 +65,17 @@ data "ibm_is_image" "centos" {
 
 resource "ibm_is_instance" "vsi-cassandra" {
     count   = var.cassandra_qtde
+    zindex  = count.index - (flood(count.index/3)*3)
     name    = "${var.cassandra_basename}-${count.index + 1}"
     vpc     = ibm_is_vpc.vpc-instance.id
-    zone    = var.zone
+    #zone    = var.zone
+    zone    = var.vpc-zones[zindex]
     keys    = [ibm_is_ssh_key.ssh_key_id.id]
     image   = data.ibm_is_image.centos.id
     profile = var.cassandra_profile
 
     primary_network_interface {
-        subnet          = ibm_is_subnet.subnet[0].id
+        subnet          = ibm_is_subnet.subnet[zindex].id
         security_groups = [ibm_is_security_group.sg1.id]
     }
 }
