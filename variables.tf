@@ -41,10 +41,28 @@ variable vpc-prefix {
  description = "VPC IP ADD"
 }
 
-
 variable ipv4-zone01 {
  default     = "10.200.1.0/24"
  description = "Base name for network components."
+}
+
+###################################
+## VPC VARIABLES
+###################################
+
+variable cassandra_basename {
+ default     = "srv-cassandra"
+ description = "Base name for network components."
+}
+
+variable cassandra_qtde {
+ default     = 1
+ description = "Number of cassandra instances"
+}
+
+variable cassandra_profile {
+ default     = "bx2-2x8"
+ description = "Number of cassandra instances"
 }
 
 ##################################
