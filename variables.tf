@@ -97,6 +97,11 @@ variable clickhouse_profile {
  description = "Number of cassandra instances"
 }
 
+variable monitoring_profile {
+ default     = "bx2-2x8"
+ description = "Number of cassandra instances"
+}
+
 ###################################
 ## MONITORING VARIABLES
 ###################################
@@ -108,11 +113,6 @@ variable monitoring_basename {
 
 variable monitoring_qtde {
  default     = 1
- description = "Number of cassandra instances"
-}
-
-variable monitoring_profile {
- default     = "bx2-2x8"
  description = "Number of cassandra instances"
 }
 
