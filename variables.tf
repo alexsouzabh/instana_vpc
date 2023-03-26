@@ -97,7 +97,7 @@ variable clickhouse_profile {
  description = "Number of cassandra instances"
 }
 
-variable monitoring_profile {
+variable monitor_profile {
  default     = "bx2-2x8"
  description = "Number of cassandra instances"
 }
