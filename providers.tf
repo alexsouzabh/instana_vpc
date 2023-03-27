@@ -7,6 +7,7 @@ terraform {
     ibm = {
       source = "IBM-Cloud/ibm"
       version = ">=1.19.0"
+      generation = 2
     }
   }
 }
