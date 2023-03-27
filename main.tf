@@ -19,7 +19,7 @@ resource "ibm_is_vpc_address_prefix" "vpc-instance-prefix" {
 # Subnet 
 resource "ibm_is_subnet" "subnet" {
   depends_on = [
-    ibm_is_vpc_address_prefix.vpc-instance
+    ibm_is_vpc_address_prefix.vpc-instance-prefix
   ]
   count = length(var.vpc-zones)
   name = "${var.netbasename}-subnet-${count.index+1}"
