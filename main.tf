@@ -8,7 +8,7 @@ resource "ibm_is_vpc" "vpc-instance" {
   address_prefix_management = "manual"
 }
 
-resource "ibm_is_vpc_address_prefix" "vpc-instance" {
+resource "ibm_is_vpc_address_prefix" "vpc-instance-prefix" {
   count   = length(var.vpc-prefix)
   cidr = element(var.vpc-prefix, count.index)
   name = "vpc-network-${count.index}"
