@@ -116,7 +116,7 @@ resource "ibm_container_vpc_cluster" "cluster" {
   worker_count      = "1"
   #resource_group_id = data.ibm_resource_group.resource_group.id
   zones {
-    name = ibm_is_subnet.subnet[0].name
+    name = ibm_is_subnet.subnet[0].zone
     subnet_id = ibm_is_subnet.subnet[0].id
     }
 }
