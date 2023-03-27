@@ -111,7 +111,7 @@ resource "ibm_is_instance" "vsi-clickhouse" {
 resource "ibm_container_vpc_cluster" "cluster" {
   name              = "my_vpc_cluster"
   vpc_id            = ibm_is_vpc.vpc-instance.id
-  kube_version      = "1.17.5"
+  kube_version      = "1.25.6"
   flavor            = "bx2.2x8"
   worker_count      = "1"
   #resource_group_id = data.ibm_resource_group.resource_group.id
