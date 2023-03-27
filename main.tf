@@ -66,7 +66,7 @@ data "ibm_is_image" "centos" {
 resource "ibm_is_instance" "vsi-monitoring" {
     count   = var.monitoring_qtde
     name    = "${var.monitoring_basename}-${count.index + 1}"
-    vpc     = ibm_is_vpc.vpc-instance.id
+    vpc     = vpc-instance.id
     zone    = var.vpc-zones[count.index - (floor(count.index/length(var.vpc-zones))*length(var.vpc-zones))]
     keys    = [ibm_is_ssh_key.ssh_key_id.id]
     image   = data.ibm_is_image.centos.id
