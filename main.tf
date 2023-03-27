@@ -107,3 +107,15 @@ resource "ibm_is_instance" "vsi-clickhouse" {
         security_groups = [ibm_is_security_group.sg1.id]
     }
 }
+
+resource "ibm_container_vpc_cluster" "cluster" {
+  name              = "my_vpc_cluster"
+  vpc_id            = vpc-instance.id
+  kube_version      = "1.17.5"
+  flavor            = "bx2.2x8"
+  worker_count      = "1"
+  #resource_group_id = data.ibm_resource_group.resource_group.id
+  zones {
+      subnet_id = subnet[0].id
+    }
+}
