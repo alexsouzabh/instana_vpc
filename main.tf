@@ -128,17 +128,12 @@ resource "ibm_container_vpc_worker_pool" "cluster_pool" {
   vpc_id            = ibm_is_vpc.vpc-instance.id
   worker_count      = 3
   #resource_group_id = data.ibm_resource_group.resource_group.id
-  zones = [
-    {
-      name = ibm_is_subnet.subnet[0].zone
-      subnet_id = ibm_is_subnet.subnet[0].id     
-    },
-    {
-      name = ibm_is_subnet.subnet[1].zone
-      subnet_id = ibm_is_subnet.subnet[1].id     
+  dynamic "zones" {
+    for_each = subnets
+    content {
+      name      = each.key
+      subnet_id = each.value
     }
-
-  ]
 }
   # zones = {
   #     name = ibm_is_subnet.subnet[0].zone
